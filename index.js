@@ -6,7 +6,7 @@ const app = express();
 const server = http.Server(app);
 const io = socket(server);
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 var players = {};
 
@@ -15,7 +15,12 @@ io.on('connection', (socket) => {
   socket.on('player join', () => {
     players[socket.id] = {
       x: 300,
-      y: 300
+      y: 300,
+      mouse: {
+        x: null,
+        y: null,
+        changed: false
+      }
     };
   });
 
@@ -27,12 +32,13 @@ io.on('connection', (socket) => {
     if (data.movement.up && player.y > 0) {
       player.y -= 5;
     }
-    if (data.movement.right && player.x < data.canvas.width - 100) {
+    if (data.movement.right && player.x < data.canvas.width) {
       player.x += 5;
     }
-    if (data.movement.down && player.y < data.canvas.height - 100) {
+    if (data.movement.down && player.y < data.canvas.height) {
       player.y += 5;
     }
+    player.mouse = data.mouse;
   });
 
   socket.on('disconnect', () => {
