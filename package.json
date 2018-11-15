@@ -1,15 +1,29 @@
 {
-  "name": "libre",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "browser-game",
+  "version": "0.2.0",
+  "description": "Javascript browser game with socket.io",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MEth0/Browser-game.git"
+  },
+  "keywords": [
+    "game",
+    "multiplayer",
+    "socket.io",
+    "js"
+  ],
+  "author": "Morgan SIMON",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MEth0/Browser-game/issues"
+  },
+  "homepage": "https://github.com/MEth0/Browser-game#readme",
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.1.1"
